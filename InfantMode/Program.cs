@@ -29,12 +29,15 @@ namespace InfantMode
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            NotifyIcon AppIcon;
-            AppIcon = new NotifyIcon();
-            AppIcon.Icon = Resources.AppIcon;
-            AppIcon.Text = "InfantMode";
+            NotifyIcon notifyIcon;
+            notifyIcon = new NotifyIcon();
+            notifyIcon.Icon = Resources.AppIcon;
+            notifyIcon.Text = "InfantMode";
 
-            AppIcon.Visible = true;
+            var notifyMenu = new NotifyMenu();
+            notifyIcon.ContextMenu = notifyMenu.ContextMenu;
+
+            notifyIcon.Visible = true;
 
             keyboardHook = new KeyboardHook();
             //keyboardHook.KeyboardHookEvent += new KeyboardHookEventHandler(InterceptAllKeys);
@@ -42,7 +45,8 @@ namespace InfantMode
             Application.Run();
 
             keyboardHook.Dispose();
-            AppIcon.Dispose();
+            notifyMenu.Dispose(); // NotifyIcon doesn't dispose it's child ContextMenu - InfantMode.Test.NotifyIconTests.NotifyIconDoesNotDisposesOfItsChildContextMenu
+            notifyIcon.Dispose();
         }
 
     }

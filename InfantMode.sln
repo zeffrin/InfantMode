@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfantMode", "InfantMode\InfantMode.csproj", "{BBE8AA84-A108-486B-827C-3DA4CF850C93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfantMode.Test", "InfantMode.Test\InfantMode.Test.csproj", "{770009FD-2388-4EE7-8A18-02AAEC4CD884}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{BBE8AA84-A108-486B-827C-3DA4CF850C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBE8AA84-A108-486B-827C-3DA4CF850C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBE8AA84-A108-486B-827C-3DA4CF850C93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{770009FD-2388-4EE7-8A18-02AAEC4CD884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{770009FD-2388-4EE7-8A18-02AAEC4CD884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{770009FD-2388-4EE7-8A18-02AAEC4CD884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{770009FD-2388-4EE7-8A18-02AAEC4CD884}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
