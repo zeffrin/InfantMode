@@ -9,11 +9,8 @@ namespace InfantMode
     static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        /// TODO track enabled state internally and make scroll lock toggle an option, click/double click sys tray toggle option too
         /// </summary>
-
-        static KeyboardHook keyboardHook;
-
         public static bool Enabled
         {
             get
@@ -21,7 +18,9 @@ namespace InfantMode
                 return Control.IsKeyLocked(Keys.Scroll);
             }
         }
-       
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
         [STAThread]
         static void Main()
         {
@@ -33,13 +32,18 @@ namespace InfantMode
             notifyIcon = new NotifyIcon();
             notifyIcon.Icon = Resources.AppIcon;
             notifyIcon.Text = "InfantMode";
+            notifyIcon.DoubleClick += new EventHandler(NotifyIcon_DoubleClick);
 
             var notifyMenu = new NotifyMenu();
+            notifyMenu.About_Click += new EventHandler(NotifyMenu_About);
+            notifyMenu.Exit_Click += new EventHandler(NotifyMenu_Exit);
+
+
             notifyIcon.ContextMenu = notifyMenu.ContextMenu;
 
             notifyIcon.Visible = true;
 
-            keyboardHook = new KeyboardHook();
+            var keyboardHook = new KeyboardHook();
             //keyboardHook.KeyboardHookEvent += new KeyboardHookEventHandler(InterceptAllKeys);
             
             Application.Run();
@@ -47,6 +51,23 @@ namespace InfantMode
             keyboardHook.Dispose();
             notifyMenu.Dispose(); // NotifyIcon doesn't dispose it's child ContextMenu - InfantMode.Test.NotifyIconTests.NotifyIconDoesNotDisposesOfItsChildContextMenu
             notifyIcon.Dispose();
+        }
+
+        private static void NotifyMenu_About(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void NotifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            // TODO need to start tracking enabled internally
+            // and then make scroll lock mode an option
+            // Enabled = !Enabled;
+        }
+
+        private static void NotifyMenu_Exit(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
     }
